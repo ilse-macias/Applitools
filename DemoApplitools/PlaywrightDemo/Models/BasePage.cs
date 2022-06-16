@@ -27,6 +27,7 @@ namespace DemoApplitools.PlaywrightDemo.Models
             );
 
             var page = await browser.NewPageAsync();
+            await page.GotoAsync("https://demo.applitools.com/");
         }
     }
 }
