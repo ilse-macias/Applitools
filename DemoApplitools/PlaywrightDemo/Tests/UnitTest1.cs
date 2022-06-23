@@ -7,9 +7,9 @@ namespace DemoApplitools
 {
     public class Tests
     {
-        protected IPlaywright playwright;
-        protected IBrowser browser;
-        protected IPage page;
+        private IPlaywright playwright;
+        private IBrowser browser;
+        private IPage page;
 
         [SetUp]
         public async Task SetupAsync()
@@ -51,7 +51,19 @@ namespace DemoApplitools
         [Test, Description("Verify if the user name is displayed once after logining.")]
         public async Task VerifyUserName()
         {
+            LoginPage loginPage = new LoginPage(page);
+            await loginPage.LoginWebsite("demo", "123456");
 
+            HomePage homePage = new HomePage(page);
+            await homePage.UsernameVisible();
+            Assert.IsNotNull(homePage);
+            //Assert.AreEqual(await homePage.UsernameVisible(), "Jack Gomez");
+        }
+
+        [Test, Description("Verify if the url")]
+        public async Task VerifyTheURL()
+        {
+        //    Assert.Contains("https://demo.applitools.com/");
         }
     }
 }
